@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analysis Result</title>
+
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            font-family:Arial,sans-serif;
+            background:linear-gradient(135deg,#00c6ff,#0072ff);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .container{
+            background:white;
+            width:85%;
+            max-width:800px;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0 0 20px rgba(0,0,0,0.2);
+            animation:fadeIn 1s ease;
+        }
+
+        h1{
+            text-align:center;
+            color:#0072ff;
+        }
+
+        h2{
+            margin-top:25px;
+            color:#333;
+        }
+
+        .score{
+            text-align:center;
+            font-size:45px;
+            font-weight:bold;
+            margin-top:20px;
+        }
+
+        .resume-status{
+            text-align:center;
+            font-size:28px;
+            margin-top:10px;
+            color:green;
+            font-weight:bold;
+        }
+
+        .progress-container{
+            width:100%;
+            background:#ddd;
+            border-radius:20px;
+            margin-top:20px;
+            overflow:hidden;
+        }
+
+        .progress-bar{
+            background:linear-gradient(90deg,#00c6ff,#0072ff);
+            color:white;
+            padding:12px;
+            text-align:center;
+            font-weight:bold;
+            border-radius:20px;
+        }
+
+        ul{
+            list-style:none;
+            padding:0;
+        }
+
+        li{
+            background:#f1f1f1;
+            margin:8px 0;
+            padding:12px;
+            border-radius:10px;
+        }
+
+        .btn{
+            display:block;
+            width:220px;
+            margin:30px auto 0;
+            background:#0072ff;
+            color:white;
+            text-align:center;
+            padding:12px;
+            border-radius:10px;
+            text-decoration:none;
+            font-size:18px;
+        }
+
+        .btn:hover{
+            background:#0056cc;
+        }
+
+        @keyframes fadeIn{
+
+            from{
+                opacity:0;
+                transform:translateY(20px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🤖 AI Resume Analysis Result</h1>
+
+        <div class="score">
+
+            {{score}}%
+
+        </div>
+
+        <div class="resume-status">
+
+            {{level}}
+
+        </div>
+
+        <div class="progress-container">
+
+            <div class="progress-bar" style="width: {{score}}%;">
+
+                {{score}}%
+
+            </div>
+
+        </div>
+
+        <h2>🎯 Predicted Role</h2>
+
+        <ul>
+            <li>{{predicted_role}}</li>
+        </ul>
+
+        <h2>📊 Total Skills Found: {{skills|length}}</h2>
+
+        <h2>✅ Detected Skills</h2>
+
+        <ul>
+
+            {% for skill in skills %}
+
+                <li>{{skill}}</li>
+
+            {% endfor %}
+
+        </ul>
+
+        <h2>❌ Missing Skills</h2>
+
+        <ul>
+
+            {% for skill in missing %}
+
+                <li>{{skill}}</li>
+
+            {% endfor %}
+
+        </ul>
+
+        <h2>💡 Resume Suggestions</h2>
+
+        <ul>
+
+            {% for s in suggestions %}
+
+                <li>{{s}}</li>
+
+            {% endfor %}
+
+        </ul>
+
+        <h2>🎤 AI Interview Questions</h2>
+
+        <ul>
+
+            {% for q in interview_questions %}
+
+                <li>{{q}}</li>
+
+            {% endfor %}
+
+        </ul>
+
+        <a href="/" class="btn">
+
+            Analyze Another Resume
+
+        </a>
+
+    </div>
+
+</body>
+
+</html>
